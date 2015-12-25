@@ -46,6 +46,7 @@ body{
 	position: absolute; 
 	color:white;
 	margin:0;
+	left:0px;
 	top:50%;
 	bottom:50%;
 	text-align:center;
