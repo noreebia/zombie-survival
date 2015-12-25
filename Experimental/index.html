@@ -6,11 +6,31 @@
 			<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
 			<link rel="shortcut icon" href="Mcdo-Design-Smooth-Leopard-Utilities-Folder-Blue.ico">
 			<title>
-			Practice
+			SphereDyne
 			</title>
+			
+			<script type="text/javascript">
+
+				function changeText(){					
+					var string;	
+					var keyCode = event.keyCode;
+
+					string = "you pressed " +keyCode + " key!";
+					
+					if(keyCode == 83){
+						window.scrollBy(0,80);
+					}
+					else if(keyCode == 87){
+						window.scrollBy(0,-80);
+					}
+
+					document.getElementById("message").innerHTML = string;
+					toggleCounter++;
+				}
+			</script>
 		</head>
 
-		<body>
+		<body onkeydown = "changeText()">
 			<a href = "#">
 				<div id = "header">
 					<img src = "http://images4.alphacoders.com/933/93368.jpg">
@@ -61,8 +81,11 @@
 					</tr>
 				</table>
 			</div>
-			<div id = "contents">
+			<div id = "contents" >
+				<p id = "message">Default</p>
+				
 			</div>
+	
 			<div id = "footer">
 			</div>
 		</body>
