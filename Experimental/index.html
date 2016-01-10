@@ -18,19 +18,42 @@
 					string = "you pressed " +keyCode + " key!";
 					
 					if(keyCode == 83){
-						window.scrollBy(0,80);
+						window.scrollBy(0,40);
 					}
 					else if(keyCode == 87){
-						window.scrollBy(0,-80);
+						window.scrollBy(0,-40);
 					}
 
 					document.getElementById("message").innerHTML = string;
-					toggleCounter++;
+				}
+				
+				function changeBackgroundColor(){
+					var string;	
+					var keyCode = event.keyCode;
+	
+					string = "you pressed " +keyCode + " key!";
+					
+					if(keyCode == 83){
+						window.scrollBy(0,40);
+					}
+					else if(keyCode == 87){
+						window.scrollBy(0,-40);
+					}
+					
+					if(keyCode == 65){
+						document.getElementById("image").src = "http://img06.deviantart.net/25de/i/2012/134/3/1/037_by_koko_stock-d4zq28i.jpg";
+					}
+					else if(keyCode == 68){
+						document.getElementById("image").src = "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTq6ThgS84lQC2qp4EncdazB9rUgUUZ0GuXsEBc0-He_7pS2tJi";
+					}
+
+					document.getElementById("message").innerHTML = string;
+					document.getElementById("contents").style.backgroundColor = "rgb("+keyCode+","+keyCode+","+keyCode+")";
 				}
 			</script>
 		</head>
 
-		<body onkeydown = "changeText()">
+		<body onkeydown = "changeBackgroundColor()">
 			<a href = "#">
 				<div id = "header">
 					<img src = "http://images4.alphacoders.com/933/93368.jpg">
@@ -83,7 +106,7 @@
 			</div>
 			<div id = "contents" >
 				<p id = "message">Default</p>
-				
+				<img id = "image" src = "#">
 			</div>
 	
 			<div id = "footer">
