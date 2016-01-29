@@ -4,22 +4,12 @@ body{
 
 #table-menu td{
 	font-size:1.5em;
-<<<<<<< HEAD
 	padding-left:60px;
 	align:left;
 	text-align:left;
 	padding-top:10px;
 	padding-bottom:10px;
 	border-bottom: 1px solid black;
-=======
-	padding-left:0px;
-	padding-top:10px;
-	padding-bottom:10px;
-	border-bottom: 1px solid black;
-	left:0px;
-	width:100%;
-	text-align:center;
->>>>>>> 485e05028c520f9a89eaa960dda234653bba1986
 }
 
 #table-menu td:hover { 
@@ -33,34 +23,32 @@ body{
 }
 
 #header{
-	display:inline-block;
-	width:100%;
-	max-height:500px;
-	position:relative;
-	float:left;
+	max-width:100%;
+	max-height: 500px;
 	overflow:hidden;
-	
-	-webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;  
 }
 
 #header img{
-	max-width:100%;
+	max-width:100%; 
 	max-height:auto;
+	margin:0px;
+	display:block;
+	position:relative;
 }
 
 #header h1{
 	font-family: Arial;
 	font-size: 2.5em;
 	position: absolute; 
+	width: 100%; 
 	color:white;
-	margin:0;
-	left:0px;
-	top:50%;
-	bottom:50%;
-	text-align:center;
-	width:100%;
+	top: 40%;
+	left: 45%;
+	margin-top: -50px;
+	margin-left: -100px;
+	border:black;
+	-webkit-text-stroke: 1px black;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #sidebar{

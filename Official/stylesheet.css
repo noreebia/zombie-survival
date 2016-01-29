@@ -4,12 +4,22 @@ body{
 
 #table-menu td{
 	font-size:1.5em;
+<<<<<<< HEAD
 	padding-left:60px;
 	align:left;
 	text-align:left;
 	padding-top:10px;
 	padding-bottom:10px;
 	border-bottom: 1px solid black;
+=======
+	padding-left:0px;
+	padding-top:10px;
+	padding-bottom:10px;
+	border-bottom: 1px solid black;
+	left:0px;
+	width:100%;
+	text-align:center;
+>>>>>>> 485e05028c520f9a89eaa960dda234653bba1986
 }
 
 #table-menu td:hover { 
