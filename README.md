@@ -1,2 +1,2 @@
 # web-development
-Source code for noreebia.dothome.co.kr
+Source codes for noreebia.dothome.co.kr
