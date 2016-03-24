@@ -1,0 +1,10 @@
+canvas{
+	cursor:crosshair;
+}
+
+#instructions{
+	display:block;
+	width:1000px;
+	height:15vh;
+	margin: 0px auto;
+}
