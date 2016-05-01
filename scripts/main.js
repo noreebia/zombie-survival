@@ -2,41 +2,46 @@ $(document).ready(function(){
     
     player = new Player();
     player.initBullets();
-    
+	
+	enemies.push(new Enemy(WIDTH,HEIGHT));
+	
+	init();
+	
     function init(){
         return setInterval(draw, 1000/60);
     }
     
     function draw(){
         clear();
-        
         printData();
-		
-		setAngle();
         player.run();
+		runEnemies();
     }
+	
+	function runEnemies(){
+		var i;
+		var numberOfEnemies = enemies.length;
+		for(i=0;i<numberOfEnemies;i++){
+			enemies[i].run();
+		}
+	}
     
     function clear(){
         ctx.clearRect(0, 0, WIDTH, HEIGHT);
     }
     
+	function spawnEnemy(spawnPoint){
+		switch(spawnPoint){
+			
+		}
+	}
     
     function printData(){
-        //ctx.fillText("mouseX:" + mouseX, 10, 10);
-		//ctx.fillText("mouseY:" + mouseY, 10, 30);
-		
 		ctx.font = "30px Arial";
 		ctx.fillText("Ammo",10,30);
 		ctx.fillText(player.countAmmo(),10,70);
     }
-	
-	function setAngle(){
-		var dx = mouseX - player.x;
-		var dy = mouseY - player.y;
-		angle = Math.atan2(dy,dx);
-	}
-    
-	
+
     $(document).click(function(e) {
 		if( canvas.is(":hover")){
 			player.shoot();
@@ -78,6 +83,4 @@ $(document).ready(function(){
 			shouldPlayerMove[3] = false;
 		}
 	});
-    
-    init();
 });

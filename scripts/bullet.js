@@ -23,8 +23,8 @@
     }
     
     Bullet.prototype.shoot = function(mouse1, mouse2){
-		this.currentX = player.x + Math.cos(angle)*player.barrelLength;
-        this.currentY = player.y + Math.sin(angle)*player.barrelLength;
+		this.currentX = player.x + Math.cos(player.angle)*player.barrelLength;
+        this.currentY = player.y + Math.sin(player.angle)*player.barrelLength;
         this.active = true;
         this.destinationX = mouse1;
         this.destinationY = mouse2;

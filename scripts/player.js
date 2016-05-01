@@ -1,4 +1,3 @@
-
     function Player(){
         this.x = WIDTH/2;
         this.y = HEIGHT/2;
@@ -11,6 +10,7 @@
 		this.barrelLength = 40;
         this.speed = 3;
 		this.ammo=0;
+		this.angle;
 		
         this.initBullets = function(){
             var i;
@@ -35,14 +35,9 @@
         }
         
         this.display = function(){
-            ctx.beginPath();
-	       	ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
-	       	ctx.fill();      
-			
-			
 			ctx.save();
 			ctx.translate( this.x, this.y );
-			ctx.rotate(angle);
+			ctx.rotate(this.angle);
 		
 			ctx.beginPath();
 			ctx.arc(0, 0, this.radius, 0, Math.PI*2, true)
@@ -50,13 +45,12 @@
 
 			ctx.fillRect(0,-(this.barrelWidth/2), this.barrelLength, this.barrelWidth);
 			ctx.restore();
-			
         }
         
         this.run = function(){
+			this.setAngle();
             this.move();
             this.display();
-            //this.countAmmo();
 			
             var i;
             for(i = 0; i<this.bullets.length;i++){
@@ -83,5 +77,11 @@
                 }    
             }
 			return this.ammo;
+		}
+		
+		this.setAngle = function(){
+			var dx = mouseX - this.x;
+			var dy = mouseY - this.y;
+			this.angle = Math.atan2(dy,dx);
 		}
     }

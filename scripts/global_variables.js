@@ -9,8 +9,14 @@
     
     var mouseX;
     var mouseY;
-	var angle;
 	var player;
 	var shouldPlayerMove = [];
 	
-    
+	var enemy;
+	var enemies = [];
+	
+	var numberOfEnemies;
+	
+	function getRandomNumber(min, max){
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
