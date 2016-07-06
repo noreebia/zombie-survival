@@ -46,8 +46,12 @@
         this.currentY += this.velocityY;
             
         if(this.currentX > WIDTH || this. currentX < 0 || this.currentY > HEIGHT || this.currentY < 0){
-            this.active = false;
+            this.deactivate();
         }
+    }
+	
+	Bullet.prototype.deactivate = function(){
+        this.active = false;
     }
     
     Bullet.prototype.display = function(){

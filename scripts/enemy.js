@@ -64,6 +64,14 @@ Enemy.prototype.display = function(){
 Enemy.prototype.setAngle = function(){
 		this.angle = Math.atan2(this.dy,this.dx);
 }
+
+Enemy.prototype.respawn = function(x, y){
+		this.x = x;
+		this.y = y;
+		this.setDestination();
+			this.setVelocity();
+			this.setAngle();
+}
 	
 Enemy.prototype.run = function(){
 		if(this.hasReachedDestination()){

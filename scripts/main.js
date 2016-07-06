@@ -16,6 +16,7 @@ $(document).ready(function(){
         printData();
         player.run();
 		runEnemies();
+		detectCollisions();
     }
 	
 	function runEnemies(){
@@ -24,6 +25,25 @@ $(document).ready(function(){
 		for(i=0;i<numberOfEnemies;i++){
 			enemies[i].run();
 		}
+	}
+	
+	function detectCollisions(){
+		var i,k;
+		var dx, dy,distance;
+		for(i=0;i<player.bullets.length;i++){
+            if( player.bullets[i].active)  {
+				for(k=0;k<enemies.length;k++){
+					dx = enemies[k].x - player.bullets[i].currentX;
+					dy = enemies[k].y - player.bullets[i].currentY;
+					
+					distance = Math.sqrt(dx*dx + dy*dy);
+					if(distance <= enemies[k].radius){
+						player.bullets[i].deactivate();
+						enemies[k].respawn(WIDTH, HEIGHT);
+					}
+				}
+            }    
+        }
 	}
     
     function clear(){
@@ -40,6 +60,9 @@ $(document).ready(function(){
 		ctx.font = "30px Arial";
 		ctx.fillText("Ammo",10,30);
 		ctx.fillText(player.countAmmo(),10,70);
+		
+		ctx.fillText("Enemies", WIDTH/2-100, 30)
+		ctx.fillText(enemies.length,WIDTH/2-100, 70);
     }
 
     $(document).click(function(e) {
