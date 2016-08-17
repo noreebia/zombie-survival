@@ -11,6 +11,12 @@
         this.speed = 3;
 		this.ammo=0;
 		this.angle;
+		this.killCount=0;
+		
+		this.initPosition = function(){
+			this.x = WIDTH/2;
+			this.y = HEIGHT/2;
+		}
 		
         this.initBullets = function(){
             var i;
@@ -44,6 +50,8 @@
 			ctx.fill();
 
 			ctx.fillRect(0,-(this.barrelWidth/2), this.barrelLength, this.barrelWidth);
+			
+			ctx.closePath();
 			ctx.restore();
         }
         
@@ -83,5 +91,9 @@
 			var dx = mouseX - this.x;
 			var dy = mouseY - this.y;
 			this.angle = Math.atan2(dy,dx);
+		}
+		
+		this.deactivate = function(){
+			this.speed = 0;
 		}
     }

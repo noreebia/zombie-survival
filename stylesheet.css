@@ -1,3 +1,9 @@
+a {
+    text-decoration:none;
+	font-family:Arial;
+	font-size: 30px;
+}
+
 canvas{
 	cursor:crosshair;
 }
@@ -7,4 +13,13 @@ canvas{
 	width:1000px;
 	height:15vh;
 	margin: 0px auto;
+}
+
+#github_link{
+	width:900px;
+	margin: 0px auto; 
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none; 
+	text-align:center;
 }

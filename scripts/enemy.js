@@ -1,4 +1,4 @@
-
+/*
 function Enemy(x, y){
 	this.x = x;
 	this.y = y;
@@ -8,17 +8,27 @@ function Enemy(x, y){
 	this.armLength=30;
 	this.armWidth=4;
 	this.distanceToDestination;
+	this.spawnOffset = 60;
 	
-	this.setDestination();
-	this.setVelocity();
-	this.setAngle();
+	this.set();
+}
+*/
+function Enemy(){
+
+	this.radius = 20;
+	this.speed = 2;
+	this.angle;
+	this.armLength=30;
+	this.armWidth=4;
+	this.distanceToDestination;
+	this.spawnOffset = 120;
 	
+	this.spawnRandomly();
 }
 
 Enemy.prototype.hasReachedDestination = function(){
 	this.distanceToDestination = Math.sqrt( Math.pow( (this.destinationY - this.y) ,2) +  Math.pow( (this.destinationX - this.x) ,2));
 
-	
 	if(this.distanceToDestination < 10){
 		return true;
 	}
@@ -26,7 +36,6 @@ Enemy.prototype.hasReachedDestination = function(){
 		return false;
 	}
 }
-
 
 Enemy.prototype.setDestination = function(){
 	this.destinationX = player.x;
@@ -58,6 +67,7 @@ Enemy.prototype.display = function(){
 
 		ctx.fillRect(0,-(this.radius*(2/3)), this.armLength, this.armWidth);
 		ctx.fillRect(0,+(this.radius*(2/3)-(this.armWidth/2)), this.armLength, this.armWidth);
+		ctx.closePath();
 		ctx.restore();
 }
 
@@ -65,20 +75,48 @@ Enemy.prototype.setAngle = function(){
 		this.angle = Math.atan2(this.dy,this.dx);
 }
 
+Enemy.prototype.spawnAtPoint = function(x,y){
+	this.x = x;
+	this.y = y;
+	this.set();
+}
+
+Enemy.prototype.spawnRandomly = function(){
+	var spawnLocation = getRandomNumber(1, 4);
+	switch(spawnLocation){
+		case 1:
+			this.spawnAtPoint(getRandomNumber(0, WIDTH), -this.spawnOffset);
+			break;
+		case 2:
+			this.spawnAtPoint( WIDTH + this.spawnOffset,getRandomNumber(0, HEIGHT));
+			break;
+		case 3:
+			this.spawnAtPoint(getRandomNumber(0, WIDTH), HEIGHT + this.spawnOffset);
+			break;
+		case 4:
+			this.spawnAtPoint(- this.spawnOffset, getRandomNumber(0, HEIGHT));
+			break;
+	}
+}
+
+Enemy.prototype.set = function(){
+	this.setDestination();
+	this.setVelocity();
+	this.setAngle();
+}
+
 Enemy.prototype.respawn = function(x, y){
-		this.x = x;
-		this.y = y;
-		this.setDestination();
-			this.setVelocity();
-			this.setAngle();
+	this.spawnAtPoint(x,y);
 }
 	
 Enemy.prototype.run = function(){
 		if(this.hasReachedDestination()){
-			this.setDestination();
-			this.setVelocity();
-			this.setAngle();
+			this.set();
 		}
 		this.move();
 		this.display();
+}
+
+Enemy.prototype.deactivate = function(){
+	this.speed = 0;
 }
