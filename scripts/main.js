@@ -8,11 +8,14 @@ $(document).ready(function(){
 	init();
 	
     function init(){
+		showAmmo = player.countAmmo();
         return setInterval(draw, 1000/60);
     }
     
     function draw(){
         clear();
+		
+		
         printData();
         player.run();
 		runEnemies();
@@ -39,9 +42,16 @@ $(document).ready(function(){
 					distance = Math.sqrt(dx*dx + dy*dy);
 					if(distance <= enemies[k].radius){
 						player.bullets[i].deactivate();
+						updateAmmoText();
 						enemies[k].respawn(WIDTH, HEIGHT);
+						break;
 					}
 				}
+				if(player.bullets[i].currentX > WIDTH || player.bullets[i]. currentX < 0 || player.bullets[i].currentY > HEIGHT || player.bullets[i].currentY < 0){
+					player.bullets[i].deactivate();
+					updateAmmoText();
+					continue;
+				}	
             }    
         }
 	}
@@ -59,7 +69,7 @@ $(document).ready(function(){
     function printData(){
 		ctx.font = "30px Arial";
 		ctx.fillText("Ammo",10,30);
-		ctx.fillText(player.countAmmo(),10,70);
+		ctx.fillText(showAmmo,10,70);
 		
 		ctx.fillText("Enemies", WIDTH/2-100, 30)
 		ctx.fillText(enemies.length,WIDTH/2-100, 70);
@@ -68,6 +78,7 @@ $(document).ready(function(){
     $(document).click(function(e) {
 		if( canvas.is(":hover")){
 			player.shoot();
+			updateAmmoText();
 		}
     });
 

@@ -16,7 +16,12 @@
 	var enemies = [];
 	
 	var numberOfEnemies;
+	var showAmmo;
 	
 	function getRandomNumber(min, max){
 		return Math.floor(Math.random()*(max-min+1)+min);
+	}
+	
+	function updateAmmoText(){
+		showAmmo = player.countAmmo();
 	}

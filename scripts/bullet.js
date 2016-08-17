@@ -44,10 +44,6 @@
     Bullet.prototype.move = function(){
         this.currentX += this.velocityX;
         this.currentY += this.velocityY;
-            
-        if(this.currentX > WIDTH || this. currentX < 0 || this.currentY > HEIGHT || this.currentY < 0){
-            this.deactivate();
-        }
     }
 	
 	Bullet.prototype.deactivate = function(){
