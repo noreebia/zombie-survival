@@ -1,12 +1,11 @@
 $(document).ready(function(){
-    
-    player = new Player();
-    player.initBullets();
 	
-
+	player = new Player();
+	player.initBullets();
+	
 	init();
 	
-    function init(){
+	function init(){
 		totalShots = 0;
 		connectedShots = 0;
 		updateAccuracy();
@@ -22,18 +21,17 @@ $(document).ready(function(){
 		
 		enemies.length = 0;
 		enemies.push(new Enemy());
-        intervalId =  setInterval(draw, 1000/60);
-    }
-    
-    function draw(){
-        clear();
+		intervalId =  setInterval(draw, 1000/60);
+	}
+	
+	function draw(){
+		clear();
 		
-		
-        printData();
-        player.run();
+		printData();
+		player.run();
 		runEnemies();
 		detectCollisions();
-    }
+	}
 	
 	function runEnemies(){
 		var i;
@@ -54,7 +52,7 @@ $(document).ready(function(){
 		var i,k,p,j;
 		var dx, dy,distance;
 		for(i=0;i<player.bullets.length;i++){
-            if( player.bullets[i].active)  {
+			if( player.bullets[i].active)  {
 				
 				if(player.bullets[i].currentX > WIDTH || player.bullets[i].currentX < 0 || player.bullets[i].currentY > HEIGHT || player.bullets[i].currentY < 0){
 					updateBulletStatus(i);
@@ -77,8 +75,8 @@ $(document).ready(function(){
 					}
 				}
 				
-            }    
-        }
+			}    
+		}
 		
 		for(p=0;p<enemies.length;p++){
 			dx = enemies[p].x - player.x;
@@ -107,11 +105,11 @@ $(document).ready(function(){
 		updateAmmoText();
 	}
 	
-    function clear(){
-        ctx.clearRect(0, 0, WIDTH, HEIGHT);
-    }
-    
-    function printData(){
+	function clear(){
+		ctx.clearRect(0, 0, WIDTH, HEIGHT);
+	}
+	
+	function printData(){
 		ctx.font = "30px Arial";
 		ctx.fillText("Ammo",10,30);
 		ctx.fillText(showAmmo,10,70);
@@ -127,18 +125,18 @@ $(document).ready(function(){
 		
 		ctx.fillText("Time Survived", WIDTH-250, 30);
 		ctx.fillText( (time2-time3)/1000+"s",WIDTH - 250, 70);
-    }
+	}
 	function updateAccuracy(){
 		accuracy = Math.round((connectedShots/totalShots)*100);
 	}
 
-    $(document).click(function(e) {
+	$(document).click(function(e) {
 		if( canvas.is(":hover")){
 			player.shoot();
 			updateAmmoText();
 			totalShots++;
 		}
-    });
+	});
 
 	$(document).mousemove(function(e){    
 		mouseX = e.pageX - canvasLeft;
